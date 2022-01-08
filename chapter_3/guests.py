@@ -18,6 +18,7 @@ print(guests)
 more_guest_2 = 'Tesla'
 guests.append(more_guest_2)
 print(guests)
+print(len(guests))
 
 guests.pop(0)
 guests.pop(0)
