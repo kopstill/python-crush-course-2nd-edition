@@ -20,3 +20,13 @@ print(my_foods)
 
 print("\nMy friend's favorite foods are:")
 print(friend_foods)
+
+print()
+
+for food in my_foods:
+    print(food)
+
+print()
+
+for food in friend_foods:
+    print(food)

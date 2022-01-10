@@ -11,3 +11,12 @@ print(players[::])
 
 for player in players[:3]:
     print(player.title())
+
+print("The first three items in the list are:")
+print(players[:3])
+
+print('Three items from the middle of the list are:')
+print(players[1:-1])
+
+print("The last three items in the list are:")
+print(players[-3:])
