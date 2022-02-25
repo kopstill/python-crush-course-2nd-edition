@@ -13,6 +13,7 @@ class Button:
 
         self.rect = pygame.Rect(0, 0, self.width, self.height)
         self.rect.center = self.screen_rect.center
+        self.rect.y = ai_game.settings.screen_height - 200
 
         self._prep_msg(msg)
 
