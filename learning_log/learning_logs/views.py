@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
+from django.http import HttpResponseServerError
 
 from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
@@ -20,9 +20,9 @@ def topics_page(request):
 
 @login_required
 def topic_page(request, topic_id):
-    topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
     if not _check_topic_owner(request, topic):
-        raise Http404
+        raise HttpResponseServerError
 
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
@@ -47,9 +47,10 @@ def new_topic(request):
 
 @login_required
 def new_entry_page(request, topic_id):
-    topic = Topic.objects.get(id=topic_id)
+    # topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
     if not _check_topic_owner(request, topic):
-        raise Http404
+        raise HttpResponseServerError
 
     if request.method != 'POST':
         form = EntryForm
@@ -67,10 +68,11 @@ def new_entry_page(request, topic_id):
 
 @login_required
 def edit_entry_page(request, entry_id):
-    edit_entry = Entry.objects.get(id=entry_id)
+    # edit_entry = Entry.objects.get(id=entry_id)
+    edit_entry = get_object_or_404(Entry, id=entry_id)
     topic = edit_entry.topic
     if not _check_topic_owner(request, topic):
-        raise Http404
+        raise HttpResponseServerError
 
     if request.method != 'POST':
         form = EntryForm(instance=edit_entry)
