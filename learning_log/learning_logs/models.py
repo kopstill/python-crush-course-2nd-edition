@@ -5,6 +5,7 @@ from django.db import models
 # Create your models here.
 class Topic(models.Model):
     text = models.CharField(max_length=200)
+    is_public = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now_add=True)
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)

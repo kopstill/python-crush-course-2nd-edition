@@ -6,13 +6,34 @@
 
 {% block content %}
 
+{% if not topics and not public_topics %}
+<h6>No (public) topics have been added yet.</h6>
+{% endif %}
+
+{% if topics %}
 <ul>
     {% for topic in topics %}
     <li><h5><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></h5></li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if topics and public_topics %}
+<hr>
+{% endif %}
+
+{% if public_topics %}
+<ul>
+    {% for public_topic in public_topics %}
+    <li><h5><a href="{% url 'learning_logs:topic' public_topic.id %}">{{ public_topic }}</a></h5></li>
     {% empty %}
     <li><h6>No topics have been added yet.</h6></li>
     {% endfor %}
 </ul>
+{% endif %}
+
+{% if user.is_authenticated %}
 <h5><a href="{% url 'learning_logs:new_topic' %}">Add a new topic</a></h5>
+{% endif %}
 
 {% endblock content %}

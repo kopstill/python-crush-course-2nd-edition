@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AnonymousUser
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseServerError
@@ -11,17 +12,26 @@ def index(request):
     return render(request, 'learning_logs/index.html')
 
 
-@login_required
+# @login_required
 def topics_page(request):
-    topics = Topic.objects.filter(owner=request.user).order_by("date_added")
-    context = {'topics': topics}
+    # if isinstance(request.user, AnonymousUser):
+    topics = None
+    if request.user.is_authenticated:
+        # topics = Topic.objects.filter(owner=request.user) | Topic.objects.filter(is_public=True).order_by("date_added")
+        topics = Topic.objects.filter(owner=request.user).order_by("date_added")
+        public_topics = Topic.objects.filter(is_public=True).exclude(owner=request.user).order_by("date_added")
+    else:
+        public_topics = Topic.objects.filter(is_public=True).order_by("date_added")
+
+    context = {'topics': topics, 'public_topics': public_topics}
     return render(request, 'learning_logs/topics.html', context)
 
 
-@login_required
+# @login_required
 def topic_page(request, topic_id):
     topic = get_object_or_404(Topic, id=topic_id)
-    if not _check_topic_owner(request, topic):
+
+    if not topic.is_public and not _check_topic_owner(request, topic):
         raise HttpResponseServerError
 
     entries = topic.entry_set.order_by('-date_added')
