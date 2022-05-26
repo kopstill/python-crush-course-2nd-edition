@@ -1,11 +1,21 @@
+# working
 # *.html linguist-language=Python
 
-data_visualization/web_api/python_repos.html linguist-vendored
-data_visualization/global_earthquakes.html linguist-vendored
-data_visualization/d6.html linguist-vendored
-data_visualization/d6_d6.html linguist-vendored
-data_visualization/d6_d10.html linguist-vendored
+# not working
+# data_visualization/web_api/python_repos.html linguist-vendored
+# data_visualization/global_earthquakes.html linguist-vendored
+# data_visualization/d6.html linguist-vendored
+# data_visualization/d6_d6.html linguist-vendored
+# data_visualization/d6_d10.html linguist-vendored
 
+# working
 # *.html linguist-vendored
 
+# not working
 # data_visualization/*.html linguist-vendored
+
+data_visualization/web_api/python_repos.html linguist-generated
+data_visualization/global_earthquakes.html linguist-generated
+data_visualization/d6.html linguist-generated
+data_visualization/d6_d6.html linguist-generated
+data_visualization/d6_d10.html linguist-generated
