@@ -14,6 +14,7 @@
 # not working
 # data_visualization/*.html linguist-vendored
 
+# working
 data_visualization/web_api/python_repos.html linguist-generated
 data_visualization/global_earthquakes.html linguist-generated
 data_visualization/d6.html linguist-generated
