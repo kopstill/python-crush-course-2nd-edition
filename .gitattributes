@@ -5,4 +5,4 @@
 # data_visualization/d6_d6.html -linguist-vendored
 # data_visualization/d6_d10.html -linguist-vendored
 
-data_visualization/* linguist-vendored
+*.html linguist-vendored
