@@ -1,2 +1,6 @@
 # *.html linguist-language=Python
-*.html linguist-documentation
+data_visualization/web_api/python_repos.html -linguist-documentation
+data_visualization/global_earthquakes.html -linguist-documentation
+data_visualization/d6.html -linguist-documentation
+data_visualization/d6_d6.html -linguist-documentation
+data_visualization/d6_d10.html -linguist-documentation
